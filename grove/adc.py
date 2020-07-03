@@ -54,7 +54,9 @@ class ADC(object):
     Args:
         address(int): optional, i2c address of the ADC unit, default 0x04
     '''
-    def __init__(self, address = 0x04):
+    # Default is 0x04 (RPI_HAT_PID, see above declaration)
+    # Changed to 0x05 (RPI_ZERO_HAT_PID)
+    def __init__(self, address = 0x0005):
         self.address = address
         self.bus = grove.i2c.Bus()
 
