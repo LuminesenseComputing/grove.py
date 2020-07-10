@@ -44,9 +44,14 @@ _TIMEOUT2 = 10000
 
 class GroveUltrasonicRanger(object):
     def __init__(self, pin):
+        
+        # Register a single pin for ultrasonic snesor
         self.dio = GPIO(pin)
 
     def _get_distance(self):
+
+        # OUT mode (trigger)
+        # sends out a short pulse (low-high-low)
         self.dio.dir(GPIO.OUT)
         self.dio.write(0)
         usleep(2)
@@ -54,6 +59,7 @@ class GroveUltrasonicRanger(object):
         usleep(10)
         self.dio.write(0)
 
+        # IN mode (echo)
         self.dio.dir(GPIO.IN)
 
         t0 = time.time()
