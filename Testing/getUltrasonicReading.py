@@ -1,4 +1,9 @@
-imprt grove_ultrasonic_ranger
+import sys
+# insert at 1, 0 is the script path (or '' in REPL)
+# Import path to library folder
+sys.path.insert(1,'../grove/')
+
+import grove_ultrasonic_ranger
 
 def main():
     # Change pin number here
@@ -12,4 +17,5 @@ def main():
         time.sleep(1)
 
     return True
+
 main()
