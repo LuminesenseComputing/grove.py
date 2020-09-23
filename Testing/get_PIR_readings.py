@@ -1,21 +1,35 @@
 import sys
+import time 
 # insert at 1, 0 is the script path (or '' in REPL)
 # Import path to library folder
-sys.path.insert(1,'../grove/')
+#sys.path.insert(1,'../grove/')
 
-import grove_mini_pir_motion_sensor
+from grove_mini_pir_motion_sensor import *
 
 def main():
     # change pin number here
-    pin = 12
+    pin1 = 5
+    pin2 = 16
+    #start_time = time.time()
 
-    pir = GroveMiniPIRMotionSensor(pin)
-
+    pir1 = GroveMiniPIRMotionSensor(pin1)
+    pir2 = GroveMiniPIRMotionSensor(pin2)
     def callback():
-        print('Motion detected.')
-
-    pir.on_detect = callback
-
+        return 
+    pir1.on_detect = callback
+    pir2.on_detect = callback
+    #print("--- %s seconds ---" % (time.time() - start_time))
     while True:
-        time.sleep(1)
+        start_time = time.time()
+        seconds = 4
+
+        elapsed_time = time.time()-start_time
+        if elapsed_time < seconds:
+            if pir1.on_detect or pir2.on_detect:
+                print('motion detected')
+                return True
+        else:
+            print('no motion')
+            return False
+
 main()

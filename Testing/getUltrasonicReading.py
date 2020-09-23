@@ -1,13 +1,13 @@
 import sys
 # insert at 1, 0 is the script path (or '' in REPL)
 # Import path to library folder
-sys.path.insert(1,'../grove/')
+#sys.path.insert(1, '~/grove.py/grove/'
 
-import grove_ultrasonic_ranger
+from grove_ultrasonic_ranger import * 
 
 def main():
     # Change pin number here
-    pin = 5
+    pin = 0
 
     sonar = GroveUltrasonicRanger(pin)
 
@@ -19,3 +19,4 @@ def main():
     return True
 
 main()
+
