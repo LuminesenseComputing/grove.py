@@ -7,7 +7,7 @@ from grove_ultrasonic_ranger import *
 
 def main():
     # Change pin number here
-    pin = 0
+    pin = 5
 
     sonar = GroveUltrasonicRanger(pin)
 

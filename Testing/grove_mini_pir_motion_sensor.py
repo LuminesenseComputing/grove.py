@@ -65,11 +65,12 @@ Grove = GroveMiniPIRMotionSensor
 
 
 def main():
-    from grove.helper import SlotHelper
+    '''from grove.helper import SlotHelper
     sh = SlotHelper(SlotHelper.GPIO)
     pin = sh.argv2pin()
+    '''
 
-    pir = GroveMiniPIRMotionSensor(pin)
+    pir = GroveMiniPIRMotionSensor(13)
 
     def callback():
         print('Motion detected.')
