@@ -2,7 +2,9 @@
 
 Status: Complete
 Made by: Bipasha Goyal
-Last modified: 26 October 2020
+Last modified: 12 November 2020
+Log:
+    - (Jordan) moved while loop out to top level
 '''
 import time
 from grove_mini_pir_motion_sensor import *
@@ -21,16 +23,18 @@ class PIR:
         self.motion2.on_detect = callback
 
     def getReadings(self):
-        while True:
-            if self.motDet == True:
-                self.motDet = False
-                print('Motion')
-                time.sleep(1)
-                #return True
-            else:
-                print('No motion')
-                time.sleep(1)
-                #return False
+        if self.motDet == True:
+            self.motDet = False
+            print('Motion')
+            time.sleep(1)
+            #return True
+        else:
+            print('No motion')
+            time.sleep(1)
+            #return False
 
 pir=PIR(12,13,19)
-pir.getReadings()
+# Edit (Jordan): moved while loop from getReadings to here.
+# TODO: test on PCB.
+while True:
+    pir.getReadings()
